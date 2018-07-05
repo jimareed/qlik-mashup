@@ -11,7 +11,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 2015
 
 ingress:
   ## Annotations to be added to the ingress.
