@@ -35,9 +35,7 @@ docker build --tag qlik-mashup .
 ```
 
 #### 3. Change the helm chart values file to point to your local docker image
-Change ./chart/qlik-mashup/values.yaml to point to the docker image you just built.  The values.yaml and templates/ingress.yaml files defines an ingress which exposes the extensions folder to the cluster and adds the hooks to authenticate to QSEfE.
-
-Referring to a locally built image works if you are using Kubernetes with Docker for Mac but it may not work for Minicube or cloud based kubernetes clusters.  If you have trouble using a local image, then add the image to a docker registry that your Kubernetes cluster has access to.
+Change ./chart/qlik-mashup/values.yaml to point to the docker image you just built.  
 
 From:
 ```
@@ -48,6 +46,10 @@ To:
 ```
 repository: qlik-mashup
 ```
+
+The values.yaml and templates/ingress.yaml files defines an ingress which exposes the extensions folder to the cluster and adds the hooks to authenticate to QSEfE.
+
+Referring to a locally built image works if you are using Kubernetes with Docker for Mac but it may not work for Minicube or cloud based kubernetes clusters.  If you have trouble using a local image, then add the image to a docker registry that your Kubernetes cluster has access to.
 
 #### 4. Upgrade the chart
 ```
