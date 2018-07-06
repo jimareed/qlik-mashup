@@ -19,7 +19,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     ## App is served at root
-    nginx.ingress.kubernetes.io/rewrite-target: "/"
+    nginx.ingress.kubernetes.io/rewrite-target: "/extensions"
     ## Resources of the Single-Page-App are relative to the root
     # also takes care of tangling slash support
     nginx.ingress.kubernetes.io/add-base-url: "true"
