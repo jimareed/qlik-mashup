@@ -27,7 +27,7 @@ require( ["js/qlik"], function ( qlik ) {
 
 	//callbacks -- inserted here --
 	//open apps -- inserted here --
-	var app = qlik.openApp('6a0d2cfb-c91b-401f-9e63-e24769dba7d9', config);
+	var app = qlik.openApp('29840006-48e4-403d-a0c0-99123779b5bd', config);
 
 	//get objects -- inserted here --
 	app.getObject('QV01','rfkpzp');
