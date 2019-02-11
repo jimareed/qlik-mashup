@@ -14,10 +14,11 @@ service:
   port: 2015
 
 ingress:
+  ## targetAuthReleaseName is the name of the helm release to target for authentication (i.e. the qsefe release name)
+  targetAuthReleaseName: qsefe
   ## Annotations to be added to the ingress.
   ##
   annotations:
-    kubernetes.io/ingress.class: nginx
     ## App is served at root
     nginx.ingress.kubernetes.io/rewrite-target: "/extensions"
     ## Resources of the Single-Page-App are relative to the root
