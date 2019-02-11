@@ -9,7 +9,8 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
   annotations:
-    nginx.ingress.kubernetes.io/auth-url: {{ default (printf "http://qsefe-edge-auth.%s.svc.cluster.local:8080/v1/auth" .Release.Namespace ) .Values.ingress.authURL | quote }}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/auth-url: {{ printf "http://%s-edge-auth.%s.svc.cluster.local:8080/v1/auth" .Values.ingress.targetAuthReleaseName .Release.Namespace | quote }}
     nginx.ingress.kubernetes.io/auth-signin: https://$host/login?returnto=$request_uri
 {{- with .Values.ingress.annotations }}
 {{ toYaml . | indent 4 }}

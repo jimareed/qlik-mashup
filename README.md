@@ -38,12 +38,12 @@ docker build --tag qlik-mashup .
 Change ./chart/qlik-mashup/values.yaml to point to the docker image you just built.  
 
 From:
-```
+```yaml
 repository: jimareed/qlik-mashup
 ```
 
 To:
-```
+```yaml
 repository: qlik-mashup
 ```
 
@@ -51,11 +51,27 @@ The values.yaml and templates/ingress.yaml files defines an ingress which expose
 
 Referring to a locally built image works if you are using Kubernetes with Docker for Mac but it may not work for Minicube or cloud based kubernetes clusters.  If you have trouble using a local image, then add the image to a docker registry that your Kubernetes cluster has access to.
 
-#### 4. Upgrade the chart
+#### 4. Update helm chart values to point to your target qsefe helm release name
+
+From:
+
+```yaml
+ingress:
+  targetAuthReleaseName: qsefe
+```
+
+To:
+
+```yaml
+ingress:
+  targetAuthReleaseName: my-qsefe-release
+```
+
+#### 5. Upgrade/install the chart in the same namespace as qsefe
 ```
 helm upgrade qlik-mashup ./chart/qlik-mashup
 ```
-#### 4. Open the mashup
+#### 6. Open the mashup
 
 You should be able to open the mashup after making these changes.
 > browse to https://elastic.example/extensions/{mashup}/{mashup}.html
